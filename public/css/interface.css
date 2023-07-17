@@ -1,0 +1,76 @@
+/* кнопки */
+.button {
+    padding: 8px 43px;
+    background: var(--gradient);
+    border-radius: 20px;
+    border: none;
+    color: var(--white);
+    font-size: var(--input-font-size);
+    max-width: -moz-max-content;
+    max-width: max-content;
+
+    cursor: pointer;
+}
+.button:hover {
+    opacity: 70%;
+}
+
+.text-button {
+    border: none;
+    background-color: var(--white);
+    text-decoration: underline;
+
+    cursor: pointer;
+}
+
+.image-button {
+    display: flex; align-items: center;
+    gap: 10px;
+
+    cursor: pointer;
+}
+
+
+.a {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    cursor: pointer;
+}
+
+
+/* поля ввода */
+/* стоит ли делать класс? */
+input, select {
+    box-sizing: border-box;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    padding: 7px 14px;
+
+    font-size: var(--input-font-size);
+    font-weight: 300;
+
+    min-width: 280px;
+}
+
+textarea {
+    box-sizing: border-box;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    padding: 7px 14px;
+
+    font-size: var(--input-font-size);
+    font-weight: 300;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 50px;
+}
+
+
+form {
+    width: 70%;
+}
