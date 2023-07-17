@@ -6,34 +6,46 @@
     <title>DiaLife</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <script src="https://kit.fontawesome.com/52ba0111cf.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/css/font.css">
-    <link rel="stylesheet" href="/css/variables.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/interface.css">
+    <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/interface.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 </head>
 <body>
 <header>
-    <a href="{{route('welcome')}}"><img src="/images/logo.svg" alt=""></a>
+    <a href="{{ route('welcome') }}"><img src="images/logo.svg" alt=""></a>
     <ul class="menu">
         <li>
-            Новости
-            <img src="/images/arrow.svg" class="arrow">
+            <a>Новости <img src="images/arrow.svg" class="arrow"></a>
+            <ul class="submenu">
+                <li class="hidden-li">fgdf</li>
+                <li><a href="#">Публикации</a></li>
+                <li><a href="#">Новости в мире диабета</a></li>
+                <li><a href="#">Новости науки</a></li>
+            </ul>
         </li>
         <li>
-            Школа диабета
-            <img src="/images/arrow.svg" class="arrow">
+            <a>Школа диабета <img src="images/arrow.svg" class="arrow"></a>
+            <ul class="submenu">
+                <li class="hidden-li">fgdf</li>
+                <li><a href="#">Уроки</a></li>
+                <li><a href="#">Книги</a></li>
+                <li><a href="#">Ролики</a></li>
+                <li><a href="#">Право</a></li>
+            </ul>
         </li>
         <li>
-            Дневник диабета
+            <a href="account.php">Дневник диабета</a>
         </li>
     </ul>
     <div class="search">
         <i class="fa-solid fa-magnifying-glass"></i>
         <input class="search-input" type="text" placeholder="Поиск">
     </div>
-    <div class="buttons">
-        <a href="{{ route('registration') }}" class="text-button">Регистрация</a>
-        <form action="{{route('authorization')}}">
+    <div class="account-buttons">
+        <a href="{{route('registration')}}" class="text-button">Регистрация</a>
+        <form action="{{'authorization'}}">
         <button class="button">Вход</button>
         </form>
     </div>

@@ -1,10 +1,11 @@
 @include('header')
 
-<h1>Добро пожаловать!</h1>
-<div>Еще не зарегистрированы? <a class="a" href="{{ route('registration') }}">Зарегистрируйтесь</a></div>
+<h1>Добро пожаловать! Войдите в аккаунт</h1>
+<div>Ещё нет аккаунта? <a href="{{route('registration')}}" class="a">Зарегистрироваться</a></div>
 
 <section class="container">
     <div class="line"></div>
+
     <form class="register" action="{{route('authorization')}}" method="post">
         @csrf
         <div class="explain-text">
@@ -24,6 +25,10 @@
 
                 <hr>
             </div>
+        </div>
+        <div class="remember-me">
+            <input type="checkbox" id="remember-me">
+            <label for="remember-me">Запомните меня</label>
         </div>
         <div class="input-container">
             <input type="submit" value="Войти" class="button"></div>

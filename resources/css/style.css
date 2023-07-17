@@ -11,6 +11,7 @@ h1, h2, h3, ul, li {
 }
 ul {
     list-style: none;
+    margin: 0; padding: 0;
 }
 h1 {
     font-size: var(--h1-size);
@@ -43,15 +44,73 @@ section {
     width: 90%;
 }
 
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
 
-.menu, .buttons {
+input {
+    accent-color: #DC415D;
+}
+
+
+
+/* меню */
+.menu {
     display: flex;
     gap: 30px;
-}
-.buttons {
-    display: flex;
+}    
+.account-buttons {
+    display: flex; align-items: center;
     gap: 14px;
 }
+.menu > li {
+    position: relative;
+}
+.submenu {
+    display: none;
+    position: absolute;
+    width: max-content;
+    left: 50%; top: -15px;
+    transform: translate(-50%, 0);
+    padding-bottom: 10px;
+}
+.submenu li {
+    text-align: center;
+    width: 100%;
+    padding: 15px 20px;
+    box-sizing: border-box;
+    border: 1px solid var(--middle-grey);
+    background-color: white;
+    width: 200px;
+}
+.submenu li {
+    border-top: none;
+}
+.submenu li:first-child {
+    background-color: none;
+}
+.submenu li:nth-child(2) {
+    border-top: 1px solid var(--middle-grey) !important;
+}
+.submenu li:last-child {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.menu li:hover .submenu {
+	display: block;
+}
+.menu li:hover .arrow {
+    transform: rotate(180deg);
+}
+.hidden-li {
+    visibility: hidden;
+    user-select: none;
+}
+.submenu li:hover {
+    background-color: #F7F7F9;
+}
+
 
 .search {
     position: relative;
@@ -66,7 +125,7 @@ section {
     color: var(--placeholder);
 }
 .search-input {
-    padding-left: 30px;
+    padding-left: 30px !important;
     min-width: 250px !important;
     width: 250px;
 }
@@ -171,17 +230,13 @@ section {
 
 .about-you {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 60% 34%;
 
     row-gap: 20px;
     column-gap: 30px;
 }
 .about-disease {
-    display: grid;
-    grid-template-columns: 50% 50%;
-
-    row-gap: 20px;
-    column-gap: 30px;
+    display: flex; gap: 30px;
 }
 
 .input-container {
@@ -203,6 +258,7 @@ section {
 
 .arrow {
     width: 10px;
+    margin-bottom: 2px;
 }
 .menu-item {
     display: flex; align-items: center;
@@ -367,6 +423,12 @@ section {
 }
 
 
+
+.main-container {
+    margin-top: 30px;
+    width: 80%;
+}
+
 .chat-container {
     margin-top: 30px;
     width: 100%;
@@ -384,6 +446,7 @@ section {
 }
 
 .chat-preview {
+    border: none; background-color: white;
     padding: 5px 10px;
     border-radius: 20px;
 
@@ -391,14 +454,17 @@ section {
     cursor: pointer;
 }
 .chat-preview:hover {
-    background-color: #EAEAEF;
+    background-color: #F7F7F9;
 }
-.chat-list .chat-preview:last-of-type {
-    background-color: #EAEAEF;
+.active-chat {
+    background-color: #F7F7F9 !important;
 }
 
 .preview-avatar {
     width: 50px; height: 50px;
+}
+.preview-body {
+    display: flex; flex-direction: column; align-items: start;
 }
 .preview-body div:first-of-type {
     margin-bottom: 5px;
@@ -414,8 +480,7 @@ section {
     gap: 10px;
 }
 .chat-list .search input {
-    width: 100%;
-    min-width: none !important;
+    width: 100%; min-width: none !important;
 }
 .chat-list .search {
     margin-bottom: 10px;
@@ -492,4 +557,26 @@ section {
 }
 .chat-inputfield input {
     width: 70%;
+}
+
+
+.button-menu {
+    margin-bottom: 20px;
+    display: flex; gap: 20px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+
+.consent, .remeber-me {
+    display: flex; align-items: baseline; gap: 10px;
+    margin-top: 20px;
+}
+
+.authorize {
+    display: flex; flex-direction: column; gap: 20px;
+    max-width: 500px;
 }
