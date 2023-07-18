@@ -20,7 +20,7 @@
             <a>Новости <img src="images/arrow.svg" class="arrow"></a>
             <ul class="submenu">
                 <li class="hidden-li">fgdf</li>
-                <li><a href="#">Публикации</a></li>
+                <li><a href="{{ route('news') }}">Публикации</a></li>
                 <li><a href="#">Новости в мире диабета</a></li>
                 <li><a href="#">Новости науки</a></li>
             </ul>
@@ -46,9 +46,17 @@
         <input class="search-input" type="text" placeholder="Поиск">
     </div>
     <div class="account-buttons">
-        <a href="{{route('registration')}}" class="text-button">Регистрация</a>
-        <form action="{{'authorization'}}">
-        <button class="button">Вход</button>
-        </form>
+        @if(!auth()->user())
+            <a href="{{route('registration')}}" class="text-button">Регистрация</a>
+            <form action="{{'authorization'}}">
+                <button class="button">Вход</button>
+            </form>
+        @else
+            <form action="{{'logout'}}">
+                @csrf
+                <button class="button">Выход</button>
+            </form>
+        @endif
+
     </div>
 </header>

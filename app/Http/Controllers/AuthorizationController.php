@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Couchbase\View;
 
+
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +18,7 @@ class AuthorizationController extends Controller
         return view('authorization');
     }
 
-    public function store(Request $request)
+    public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
         $email = $request->input('email');
         $user = User::where('email','=', $email)->first();
@@ -49,5 +50,13 @@ class AuthorizationController extends Controller
                 'email' => 'Такой почты нет'
             ]);
     }
+    public function destroy(Request $request): \Illuminate\Http\RedirectResponse
+    {
+        Auth::logout();
 
+        $request = session()->invalidate();
+        $request = session()->regenerateToken();
+
+        return redirect()->route('welcome');
+    }
 }

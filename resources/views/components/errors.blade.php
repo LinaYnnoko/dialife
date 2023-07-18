@@ -1,15 +1,11 @@
 @if($errors->any())
-    <div >
-
+    <div>
         <ul>
             @foreach($errors->all() as $message)
                 <li>
                     {{ $message }}
                 </li>
-
             @endforeach
         </ul>
-
     </div>
-
 @endif
