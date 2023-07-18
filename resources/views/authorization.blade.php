@@ -1,6 +1,6 @@
 @include('header')
 
-<h1>Добро пожаловать! Войдите в аккаунт</h1>
+<h1>Войдите в аккаунт!</h1>
 <div>Ещё нет аккаунта? <a href="{{route('registration')}}" class="a">Зарегистрироваться</a></div>
 
 <section class="container">

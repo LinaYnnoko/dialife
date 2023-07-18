@@ -36,7 +36,9 @@
             </ul>
         </li>
         <li>
-            <a href="account.php">Дневник диабета</a>
+            @auth
+                <a href="{{ route('cabinet') }}">Дневник диабета</a>
+            @endauth
         </li>
     </ul>
     <div class="search">

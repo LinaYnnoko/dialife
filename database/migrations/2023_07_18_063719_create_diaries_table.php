@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDiaryTable extends Migration
+class CreateDiariesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateDiaryTable extends Migration
      */
     public function up()
     {
-        Schema::create('diary', function (Blueprint $table) {
-            $table->id();
+        Schema::create('diaries', function (Blueprint $table) {
+            $table->id()->from(1001);
             $table->timestamps();
-            $table->foreignId('user_id')->constrained();
+/*          $table->integer('user_id')->unsigned()->nullable();*/
 
             $table->string('height');
             $table->string('weight');
@@ -25,6 +25,7 @@ class CreateDiaryTable extends Migration
             $table->string('cholesterol');
 
             $table->boolean('isPrivate')->default(false);
+            $table->foreignId('user_id')->nullable()->constrained();
         });
     }
 
@@ -35,6 +36,6 @@ class CreateDiaryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('diary');
+        Schema::dropIfExists('diaries');
     }
 }

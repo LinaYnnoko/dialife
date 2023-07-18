@@ -30,9 +30,15 @@ class AuthorizationController extends Controller
         if (Auth::attempt($request->only('email', 'password'))) {
 
             session_start();
-
+            $_SESSION['status'] = $user;
             $_SESSION['first_name'] = $user->first_name;
             $_SESSION['second_name'] = $user->second_name;
+            $_SESSION['email'] = $user->email;
+            $_SESSION['geolocation'] = $user->geolocation;
+            $_SESSION['date_of_birthday'] = $user->date_of_birthday;
+            $_SESSION['type_of_diabetes'] = $user->type_of_diabetes;
+            $_SESSION['date_of_illness'] = $user->date_of_illness;
+            $_SESSION['avatar'] = $user->avatar;
 
             return redirect()->route('cabinet');
         }
@@ -40,7 +46,7 @@ class AuthorizationController extends Controller
         return back()
             ->WithInput()
             ->withErrors([
-                'email' => 'Почта введена неверно'
+                'email' => 'Такой почты нет'
             ]);
     }
 

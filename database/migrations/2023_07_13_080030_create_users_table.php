@@ -20,9 +20,9 @@ class CreateUsersTable extends Migration
             $table->string('first_name');
             $table->string('second_name');
             $table->boolean('gender');
-            $table->string('geolocation');
+            $table->string('geolocation')->default(null);
             $table->string('email')->unique();
-            $table->string('avatar');
+            $table->string('avatar')->default(null);
             $table->date('date_of_birthday');
 
             $table->string('type_of_diabetes');
