@@ -1,8 +1,8 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/interface.css": "/css/interface.css",
     "/css/font.css": "/css/font.css",
     "/css/variables.css": "/css/variables.css",
     "/css/style.css": "/css/style.css",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/css/interface.css": "/css/interface.css"
 }

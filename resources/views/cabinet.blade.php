@@ -8,7 +8,7 @@
     @if(isset($_SESSION['avatar'])&&$_SESSION['avatar']!=null)
         <img src="{{$_SESSION['avatar']}}" alt="">
     @else
-        <img src="images/null_avatar.png" alt="">
+        <img src="/images/null_avatar.png" alt="">
     @endif
     <div>
         <h1>{{ $_SESSION['first_name'] }}
@@ -91,131 +91,66 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input class="search-input" type="text" placeholder="Поиск">
             </div>
-
-            <button class="chat-preview active-chat" onclick="showChat(event, 'id1')">
-                <img class="preview-avatar" src="images/doctor.png">
-                <div class="preview-body">
-                    <div>Доктор Врач</div>
-                    <div>Вы: Спасибо большое! Благо...</div>
-                </div>
-            </button>
-            <button class="chat-preview" onclick="showChat(event, 'id2')">
-                <img class="preview-avatar" src="images/doctor.png">
-                <div class="preview-body">
-                    <div>Второй Врач</div>
-                    <div>Вы: Спасибо большое! Благо...</div>
-                </div>
-            </button>
-            <button class="chat-preview" onclick="showChat(event, 'id3')">
-                <img class="preview-avatar" src="images/doctor.png">
-                <div class="preview-body">
-                    <div>Пользователь</div>
-                    <div>Вы: Спасибо большое! Благо...</div>
-                </div>
-            </button>
+            @foreach($doctors as $doctor)
+                <button class="chat-preview active-chat" onclick="showChat(event, 'id1')">
+                    <img class="preview-avatar" src="{{--{{ $doctor->avatar }}--}} images/doctor.png">
+                    <div class="preview-body">
+                        <div>{{ $doctor->first_name }} {{ $doctor->second_name }}</div>
+                        <div></div>
+                    </div>
+                </button>
+            @endforeach
         </div>
         <div class="vertical-line"></div>
-
 
         <div class="chat" id="id1-chat">
             <div class="chat-header">
                 <img src="images/doctor.png">
-                <h3>Доктор Врач</h3>
+                <h3>{{ $doctor->first_name }} {{ $doctor->second_name }}</h3>
             </div>
-            <div class="chat-content">
-                <div class="chat-date">20 июля</div>
-                <div class="message left">
-                    <div class="left-message">У вас всё замечательно получается, продолжайте в том же духе!</div>
-                </div>
-                <div class="message right">
-                    <div class="right-message">Спасибо большое, благодаря вам мне действительно гораздо легче. Жизнь
-                        наполняется красками
-                    </div>
-                </div>
-            </div>
-            <div class="chat-inputfield">
-                <input type="text" placeholder="Напишите сообщение">
-                <button class="button">Отправить</button>
-            </div>
-        </div>
-        <div class="chat hidden" id="id2-chat">
-            <div class="chat-header">
-                <img src="images/doctor.png">
-                <h3>Второй Врач</h3>
-            </div>
-            <div class="chat-content">
-                <div class="chat-date">20 июля</div>
-                <div class="message left">
-                    <div class="left-message">У вас всё замечательно получается, продолжайте в том же духе!</div>
-                </div>
-                <div class="message right">
-                    <div class="right-message">Спасибо большое, благодаря вам мне действительно гораздо легче. Жизнь
-                        наполняется красками
-                    </div>
-                </div>
-            </div>
-            <div class="chat-inputfield">
-                <input type="text" placeholder="Напишите сообщение">
-                <button class="button">Отправить</button>
-            </div>
-        </div>
-        <div class="chat hidden" id="id3-chat">
-            <div class="chat-header">
-                <img src="images/doctor.png">
-                <h3>Пользователь</h3>
-            </div>
-            <div class="chat-content">
-                <div class="chat-date">20 июля</div>
-                <div class="message left">
-                    <div class="left-message">У вас всё замечательно получается, продолжайте в том же духе!</div>
-                </div>
-                <div class="message right">
-                    <div class="right-message">Спасибо большое, благодаря вам мне действительно гораздо легче. Жизнь
-                        наполняется красками
-                    </div>
-                </div>
-            </div>
-            <div class="chat-inputfield">
-                <input type="text" placeholder="Напишите сообщение">
-                <button class="button">Отправить</button>
-            </div>
-        </div>
-    </div>
 
-    <div class="diary-container containers hidden">
-        <h3>Пройдите короткий опрос для контроля самочувствия</h3>
+            <div id="app">
+                <chat-message :user="{{ auth()->user() }}"></chat-message>
+                <chat-form></chat-form>
+            </div>
 
-        <form class="survey" action="" method="post">
-            @csrf
-            <div>
-                <div>Какой у вас рост? (в сантиметрах)</div>
-                <input name="height" type="number" min="100" max="300">
-            </div>
-            <div>
-                <div>Какой у вас вес?</div>
-                <input name="weight" type="number" min="10" max="1000">
-            </div>
-            <div>
-                <div>Какое у вас на данный момент давление?</div>
-                <input name="blood_pressure" type="text">
-            </div>
-            <div>
-                <div>Какое у вас уровень глюкозы?</div>
-                <input name="glucose_level" type="text">
-            </div>
-            <div>
-                <div>Какой уровень холестирина у вас в крови?</div>
-                <input name="cholesterol" type="text">
-            </div>
-            <div>
-                <div>Оставить заполненную информацию приватной или сделать общедоступной?</div>
-                <select name="isPrivate">
-                    <option value="1">Приватная</option>
-                    <option value="0">Общедоступная</option>
-                </select>
-            </div>
-            <div><input type="submit" value="Сохранить результат" class="button"></div>
-        </form>
+        </div>
+
+        <div class="diary-container containers hidden">
+            <h3>Пройдите короткий опрос для контроля самочувствия</h3>
+
+            <form class="survey" action="" method="post">
+                @csrf
+                <div>
+                    <div>Какой у вас рост? (в сантиметрах)</div>
+                    <input name="height" type="number" min="100" max="300">
+                </div>
+                <div>
+                    <div>Какой у вас вес?</div>
+                    <input name="weight" type="number" min="10" max="1000">
+                </div>
+                <div>
+                    <div>Какое у вас на данный момент давление?</div>
+                    <input name="blood_pressure" type="text">
+                </div>
+                <div>
+                    <div>Какое у вас уровень глюкозы?</div>
+                    <input name="glucose_level" type="text">
+                </div>
+                <div>
+                    <div>Какой уровень холестирина у вас в крови?</div>
+                    <input name="cholesterol" type="text">
+                </div>
+                <div>
+                    <div>Оставить заполненную информацию приватной или сделать общедоступной?</div>
+                    <select name="isPrivate">
+                        <option value="1">Приватная</option>
+                        <option value="0">Общедоступная</option>
+                    </select>
+                </div>
+                <div><input type="submit" value="Сохранить результат" class="button"></div>
+            </form>
+        </div>
     </div>
 </section>
 

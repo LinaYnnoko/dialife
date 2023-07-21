@@ -6,10 +6,11 @@
     <title>DiaLife</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <script src="https://kit.fontawesome.com/52ba0111cf.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/font.css">
-    <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/interface.css">
+    <link rel="stylesheet" href="/css/font.css">
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/interface.css">
+    <script src="{{ mix('/js/app.js') }}" defer></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 </head>
 <body>
@@ -57,6 +58,5 @@
                 <button class="button">Выход</button>
             </form>
         @endif
-
     </div>
 </header>

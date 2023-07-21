@@ -32,6 +32,7 @@ class AuthorizationController extends Controller
 
             session_start();
             $_SESSION['status'] = $user;
+            $_SESSION['user_id'] = $user->id;
             $_SESSION['first_name'] = $user->first_name;
             $_SESSION['second_name'] = $user->second_name;
             $_SESSION['email'] = $user->email;
@@ -55,7 +56,6 @@ class AuthorizationController extends Controller
         Auth::logout();
 
         $request = session()->invalidate();
-        $request = session()->regenerateToken();
 
         return redirect()->route('welcome');
     }

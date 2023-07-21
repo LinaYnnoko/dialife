@@ -12,19 +12,11 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
+    .vue()
+    .postCss('resources/css/app.css', 'public/css', []);
 
-    ]);
-mix.postCss('resources/css/style.css', 'public/css', [
-        //
-    ]);
-mix.postCss('resources/css/variables.css', 'public/css', [
-    //
-]);
-mix.postCss('resources/css/font.css', 'public/css', [
-    //
-]);
-mix.postCss('resources/css/interface.css', 'public/css', [
-    //
-]);
+mix.postCss('resources/css/style.css', 'public/css', []);
+mix.postCss('resources/css/variables.css', 'public/css', []);
+mix.postCss('resources/css/font.css', 'public/css', []);
+mix.postCss('resources/css/interface.css', 'public/css', []);
 

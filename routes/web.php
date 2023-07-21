@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\AuthorizationController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\DiaryController;
 use App\Http\Controllers\DoctorRegistrationController;
 use App\Http\Controllers\NewsPostController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\UserCabinetController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +39,16 @@ Route::get('/logout', [AuthorizationController::class, 'destroy'])->middleware('
 Route::get('/cabinet', [DiaryController::class, 'create'])->name('cabinet');
 Route::post('/cabinet', [DiaryController::class, 'store']);
 
+Route::get('/cabinet', [UserCabinetController::class, 'doctors'])->name('cabinet');
+
 Route::get('/news',[NewsPostController::class, 'post'])->name('news');
 
 Route::get('/post_news', [NewsPostController::class, 'create'])->name('post_news');
 Route::post('/post_news', [NewsPostController::class, 'store']);
+
+Route::controller(ChatController::class)->group(function (){
+    Route::get('/', 'index');
+    Route::get('/messages', 'messages');
+    Route::post('/send', 'send');
+});
+

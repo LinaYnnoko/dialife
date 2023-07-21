@@ -1,5 +1,4 @@
 @include('header')
-
 <section class="welcome">
     <div class="welcome-description">
         <h1>Социальная сеть для больных диабетом и неравнодушных врачей</h1>
